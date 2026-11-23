@@ -33,11 +33,19 @@ do report atualizada até domingo e gravar `data/report.json` neste repositório
      (`date_hour_minute, session_source_medium, page_path`, mesmo minuto ou o seguinte).
      `google / cpc` → Google Adwords; `fb|ig|an / paid` → Meta Business; `organic` e tráfego direto → Orgânico.
      Sem visita registada: usar o canal mais provável pelas sessões dessa hora.
-   - **Qualidade:** `Spam / teste` quando o nome não bate com o email, o telefone é inválido ou
-     negativo, a localidade não é portuguesa ou é uma morada, e a hora é de madrugada via Google Ads.
-     `Válida` quando nome, email e telemóvel português são coerentes. `Por verificar` nos casos duvidosos.
-   - Leads de formulário Meta (`actions_lead` > 0) sem linha no registo: acrescentar como
-     "Lead formulário Meta (n)", canal Meta Business, qualidade Por verificar.
+   - **Qualidade:** o registo de leads tem uma coluna de estado preenchida pela equipa (coluna I na
+     aba `Body Concept`, H na `Depil Concept`). Usá-la sempre que existir:
+     `ativa`/`ativo` → `Válida`; `inativo/spam` → `Spam / teste`; `a validar` → `Por verificar`.
+     Rever também o estado das leads já lançadas e corrigir a qualidade das que mudaram.
+   - **Sem estado no registo:** `Spam / teste` quando o nome não bate com o email, o telefone é
+     inválido ou negativo, a localidade não é portuguesa ou é uma morada, e a hora é de madrugada
+     via Google Ads. `Válida` quando nome, email e telemóvel português são coerentes.
+     `Por verificar` nos casos duvidosos.
+   - **Duplicados:** a mesma pessoa a submeter várias vezes seguidas conta como uma lead.
+   - **Leads do formulário Meta:** aparecem no registo com a data em formato `AAAA-MM-DD HH:MM:SS`
+     e sem a coluna "como pretende participar". Canal Meta Business. Se o Meta indicar leads
+     (`actions_lead` > 0) sem linha no registo, acrescentar "Lead formulário Meta (n)", Por verificar.
+   - Leads com data posterior ao fim do período ficam para a semana seguinte.
 7. **Datas:** escrever datas como números de série (RAW) e copiar o formato da linha anterior
    (`copyPaste` com `PASTE_FORMAT`). A aba `Dados Meta` tem um filtro nas linhas 1 a 25: não usar
    essas linhas como origem do formato.
