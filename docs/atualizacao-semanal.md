@@ -21,6 +21,8 @@ do report atualizada até domingo e gravar `data/report.json` neste repositório
 
 1. **Período.** Fim = ontem (domingo). O início (`Report!B2`) não muda.
 2. **Ler o estado atual** das quatro abas de dados e ver a última data de cada uma.
+   **Voltar a puxar também os últimos 4 dias já lançados** e corrigir essas linhas: o último dia
+   pode ter sido lançado a meio (dia incompleto) e as plataformas revêem valores recentes.
 3. **Dados Meta** (`date, campaign, spend, impressions, clicks, actions_lead`): acrescentar as linhas
    dos dias em falta. Marca: campanha com `BODY` → BodyConcept; com `DEPIL` → DepilConcept.
 4. **Dados Google Ads** (`date, campaign, spend, impressions, clicks, conversions`): acrescentar os
@@ -33,8 +35,9 @@ do report atualizada até domingo e gravar `data/report.json` neste repositório
      (`date_hour_minute, session_source_medium, page_path`, mesmo minuto ou o seguinte).
      `google / cpc` → Google Adwords; `fb|ig|an / paid` → Meta Business; `organic` e tráfego direto → Orgânico.
      Sem visita registada: usar o canal mais provável pelas sessões dessa hora.
-   - **Qualidade:** o registo de leads tem uma coluna de estado preenchida pela equipa (coluna I na
-     aba `Body Concept`, H na `Depil Concept`). Usá-la sempre que existir:
+   - **Qualidade:** o registo de leads tem uma coluna de estado preenchida pela equipa (a primeira coluna a seguir aos
+     consentimentos e ao IP, sem cabeçalho: L na aba `Body Concept`, J na `Depil Concept`; confirmar
+     a posição, porque já mudou). Usá-la sempre que existir:
      `ativa`/`ativo` → `Válida`; `inativo/spam` → `Spam / teste`; `a validar` → `Por verificar`.
      Rever também o estado das leads já lançadas e corrigir a qualidade das que mudaram.
    - **Sem estado no registo:** `Spam / teste` quando o nome não bate com o email, o telefone é
@@ -45,6 +48,7 @@ do report atualizada até domingo e gravar `data/report.json` neste repositório
    - **Leads do formulário Meta:** aparecem no registo com a data em formato `AAAA-MM-DD HH:MM:SS`
      e sem a coluna "como pretende participar". Canal Meta Business. Se o Meta indicar leads
      (`actions_lead` > 0) sem linha no registo, acrescentar "Lead formulário Meta (n)", Por verificar.
+     A mesma pessoa no formulário Meta e no site no mesmo dia conta como uma lead Meta Business.
    - Leads com data posterior ao fim do período ficam para a semana seguinte.
 7. **Datas:** escrever datas como números de série (RAW) e copiar o formato da linha anterior
    (`copyPaste` com `PASTE_FORMAT`). A aba `Dados Meta` tem um filtro nas linhas 1 a 25: não usar
